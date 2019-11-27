@@ -8,5 +8,5 @@ docker run -d \
     -p 8888:8888 \
     --restart on-failure \
     --log-opt max-size=100mb \
-    chenyu1990/chat-app-server:1.0.0
+    chenyu1990/wildfirechat-app-server:1.0.0
 ```

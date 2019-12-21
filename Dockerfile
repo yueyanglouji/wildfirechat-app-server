@@ -14,12 +14,13 @@ ENV PATH=$M2:$PATH
 RUN apt update && \
     apt install git wget openjdk-8-jdk -y && \
     cd /root && \
+    mkdir -p /opt/app-server && \
     wget http://www-eu.apache.org/dist/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz && \
     tar zxvf apache-maven-3.6.1-bin.tar.gz && \
     git clone https://github.com/wildfirechat/im-app_server && \
+    cp -r /root/im-app_server/config /opt/app-server && \
     cd /root/im-app_server && \
     mvn package && \
-    mkdir -p /opt/app-server && \
     cd /opt/app-server && \
     cp /root/im-app_server/target/app-*.jar . && \
     export APP=`ls *.jar` && \

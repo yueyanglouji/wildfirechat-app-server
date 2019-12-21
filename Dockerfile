@@ -18,7 +18,7 @@ RUN apt update && \
     wget http://www-eu.apache.org/dist/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz && \
     tar zxvf apache-maven-3.6.1-bin.tar.gz && \
     git clone https://github.com/wildfirechat/im-app_server && \
-    cp -r /root/im-app_server/config /opt/app-server && \
+    cp -r /root/im-app_server/config /opt/app-server/ && \
     cd /root/im-app_server && \
     mvn package && \
     cd /opt/app-server && \

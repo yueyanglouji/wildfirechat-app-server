@@ -1,18 +1,17 @@
 # wildfirechat-app-server
 
 ```
-CONFIG_DIR=/data/chat-config/app
-mkdir -p /data/chat-config/app
-docker run -d --name chat-app-server chenyu1990/wildfirechat-app-server:1.0.0
-docker cp chat-app-server:/opt/app-server/config $CONFIG_DIR
+CONFIG_DIR=/var/chat-app-server
+mkdir -p /var/chat-app-server
+docker run -d --name chat-app-server yueyanglouji/wildfirechat-app-server
+docker cp chat-app-server:/apps/app-server/config $CONFIG_DIR
 docker rm -f chat-app-server
 docker run -d \
     --name chat-app-server \
     --hostname chat-app-server \
-    -v $CONFIG_DIR:/opt/app-server/config \
+    -v /var/chat-app-server/config:/apps/app-server/config \
     -p 8888:8888 \
     --restart on-failure \
-    --log-opt max-size=100mb \
-    --network chat-network \
-    chenyu1990/wildfirechat-app-server:1.0.0
+    --log-opt max-size=10mb \
+    yueyanglouji/wildfirechat-app-server
 ```
